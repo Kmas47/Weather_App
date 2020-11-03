@@ -10,10 +10,8 @@ function UserLocation() {
        console.log(prop)
        if (state.city !== "") {
         setState({ city: prop.city })
-       } 
-        if(state.city !== "") {
         store.dispatch({ type: 'INITIAL', payload: state.city }) 
-       }  
+       } 
    }) 
    return(
         
