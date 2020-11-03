@@ -50,7 +50,7 @@ export function Weather() {
         const { getCityByName: 
             { weather: 
                 { 
-                    summary: { title, icon, description }, 
+                    summary: { icon, description }, 
                     wind: { speed, deg },
                     temperature: { actual, feelsLike, min, max }, 
                     clouds: { all, visibility, humidity }, timestamp, 
@@ -76,7 +76,7 @@ export function Weather() {
                             <h3>Humidity: {humidity}%</h3>
                         </div>
                         <div>
-                            <p>TimeStmap:{timestamp}
+                            <p>TimeStamp:{timestamp}
                             </p>
                         </div>
                 </div>
