@@ -1,3 +1,5 @@
+import store from './store/store'
+
 const { ApolloClient, InMemoryCache, gql, useQuery } = require("@apollo/client");
 
 const client = new ApolloClient({
@@ -5,6 +7,7 @@ const client = new ApolloClient({
     cache: new InMemoryCache()
 });
 
+console.log(store.getState())
 
 const GET_WEATHER = gql 
 `
