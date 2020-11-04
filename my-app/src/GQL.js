@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import store from './store/store'
 
 const { ApolloClient, InMemoryCache, gql, useQuery } = require("@apollo/client");
@@ -7,12 +8,21 @@ const client = new ApolloClient({
     cache: new InMemoryCache()
 });
 
-console.log(store.getState())
+export function Weather() {
+  
+const [city, setCity] = useState("Toronto");
+store.subscribe(() => {
+  const userCity = store.getState().state.city
+  if (userCity !== null && city == null) {
+    setCity(userCity)
+  }
+})
 
 const GET_WEATHER = gql 
+
 `
 query{
-    getCityByName(name: "Toronto"){
+    getCityByName(name: "${city}"){
       weather{
         summary{
           title
@@ -40,7 +50,6 @@ query{
   }
 `;
 
-export function Weather() {
     
     const {Loading, error, data} = useQuery(GET_WEATHER);
 

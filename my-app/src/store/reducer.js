@@ -1,8 +1,8 @@
-let initial_state = {
+let initialState = {
     city: null
 };
 
-export default function rootReducer(state ={ initial_state }, action) {
+export default function rootReducer(state ={ initialState }, action) {
     switch (action.type) {
         case 'INITIAL':
             return  {

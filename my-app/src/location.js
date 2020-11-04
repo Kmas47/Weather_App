@@ -1,4 +1,4 @@
-import { Component, useState } from 'react';
+import { Component } from 'react';
 import { connect } from 'react-redux';
 import store from './store/store'; 
   
@@ -6,21 +6,27 @@ class UserLocation extends Component {
     state = {
        city: ""
    };
-   cityLocation() {
+
+    componentDidMount() {
         const url = `http://api.ipstack.com/check?access_key=${process.env.REACT_APP_KEY}&fields=city`;
         const city = fetch(url).then(Response => Response.json());
         city.then(prop => {
             this.setState({ city: prop.city })   
-            const a = store.dispatch({ type: 'INITIAL' , payload: this.state.city });
-            console.log(a);
+            store.dispatch(
+                    { 
+                        type: 'INITIAL', 
+                        payload: this.state.city 
+                    }
+                );
         }) 
     }
 
-    componentWillMount() {
-        this.cityLocation();
-        
+    componentDidUpdate() {
+        if((store.getState().city) !== undefined) {
+            console.log(store.getState().city)
+        }
     }
-    
+
     render() {
 
         return(
