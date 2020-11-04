@@ -9,11 +9,11 @@ import store from './store/store';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
       <ApolloProvider client={client}>
+      <Provider store={store}>
           <App />
+          </Provider>
       </ApolloProvider>
-    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
